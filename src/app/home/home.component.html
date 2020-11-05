@@ -1,0 +1,134 @@
+<div id="popupDescProd" *ngIf="popupDescProd">
+    <div id="infoProd" class="col-11 col-md-4 ">
+        <div style="width: 100%;text-align: right;">
+            <span (click)="fecharPoPupDescProd()" style="cursor: pointer;">X</span>
+        </div>
+        <div style="width: 100%;text-align: center;">
+            <img src="../../assets/IconesGerais/pepel.png">
+        </div>
+       
+        <ul>
+            <li>
+                Nome:<b>{{descProdAtualPopup['nomePapel']}}</b>
+            </li>
+            <li>
+                Tipo:<b>{{descProdAtualPopup['tipoPapel']}}</b>
+            </li>
+            <li>
+                Tamanho:<b>{{descProdAtualPopup['tamanhoPapel']}}</b>
+            </li>
+            <li>
+                Gramagem:<b>{{descProdAtualPopup['gramagemPapel']}}</b>
+            </li>
+            <li>
+                Fornecedor:<b>{{descProdAtualPopup['fornecedorPapel']}}</b>
+            </li>
+            <li>
+                Quantidade em estoque:<b>{{descProdAtualPopup['quantidadePapel']}}</b>
+            </li>
+        </ul>
+        <div style="width: 100%;text-align: center;">
+            <button class="btn btn-info btn-sm" (click)="fecharPoPupDescProd()">Ok</button>
+        </div>
+    </div>
+</div>
+
+<div class="row" id="containerHome">
+    <div class="col-2 col-sm-1 col-lg-2" id="menuLateralSearch">
+        <div class=" mb-2 d-block d-lg-none" style="text-align: left">
+            <img class="ml-2" src="./assets/IconesGerais/lupaWhite.png" id="lupaSearchImg" (click)="trougleMenuLateralMObile()">
+        </div>
+
+        <div class="d-none d-lg-block" id="menuLat">
+            <span>
+                Pesquisa:
+            </span>
+            <hr />
+
+            <div class="d-block d-lg-none col-12">
+                <div class="input-group mb-1 mt-2 p-0">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">
+                      <img src="./assets/IconesGerais/lupa.png" id="lupaSearchImg">
+                    </span>
+                  </div>
+                  <input type="text" routerLink="/"  (keyup)="searchProdMobile(pesquisa)" class="form-control" #pesquisa placeholder="Tipo, Nome, Tamanho, Fornecedor, Gramagem ..." aria-label="Search" aria-describedby="basic-addon1">
+                </div>
+            </div>
+
+            <div id="cardProdutoInfo" *ngFor="let produto of searchFilter" (click)="indicaLocalArmazenamento(produto.localPapel.letra+'_'+(produto.localPapel.espaco+1),produto)">
+                <img src="./assets/IconesGerais/pepel.png">
+               
+               <ul>
+                   <li>
+                       {{produto.nomePapel}}
+                   </li>
+                   <li>
+                       {{produto.tamanhoPapel}}
+                   </li>
+                   <li>
+                    {{produto.gramagemPapel}}
+                    </li>
+                   <li>
+                      {{produto.tipoPapel}}
+                   </li>
+                   <li>
+                       {{produto.fornecedorPapel}}
+                   </li>
+                   <li>
+                       {{produto.quantidadePapel}} UN
+                   </li>
+               </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="col row pl-4" id="containerTelaPrateleiraHome">
+        <div class="col-12 text-center mb-2" style="border-bottom: 1px solid rgba(0,0,0,.1);">
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="sinbolGarfLugares" style="background-color: #202D32;"></div>
+                        </td>
+                        <td>
+                            <small class="text-muted">Vazio</small>
+                        </td>
+                        <td class="pl-2">
+                            <div class="sinbolGarfLugares bg-danger"></div>
+                        </td>
+                        <td>
+                            <small class="text-muted">Cheio</small>
+                        </td>
+                    </tr>
+                </table>
+                
+            </div>
+            <b>Inicio</b>
+        </div>
+        
+        <div *ngFor="let prateleira of prateleiras; let indcPrateleria = index" class="col-5 col-lg-2 Containerprateleira" style="margin: 3px;margin-bottom: 10px;">
+             <b>{{prateleira.letraPrateleira}}</b>  
+            <div *ngFor="let andar of prateleira.andares; let indcGondula = index" class="ContainerGondula row">
+                <div style="width: 100%;">
+                 <small>{{andar.andares}}</small>   
+                </div>
+                <div (click)="mostraPopupDescProduto(lugar.quantidadeProdutoArmazenado,lugar)" class="col-12 m-1 espacoCard{{lugar.quantidadeProdutoArmazenado}}" *ngFor="let lugar of andar.espacos;let espacoId = index" id="{{andar.andares}}_{{espacoId+1}}">
+                    <small *ngIf="!lugar['descProduto']" class="text-muted">({{espacoId+1}})</small>
+                    <small *ngFor="let desc of lugar['descProduto']">{{desc['quantidadePapel']}} UN</small>  
+                </div>
+            </div>
+        </div>
+        
+        <div *ngIf="loadingPrateleiras === false" class="col-12 text-center" style="height: 100%;display: flex;justify-content: center;align-content: center;">
+            <p style="width: 70%;font-size: 20px;margin-top: 5%;">
+                Olá! Vejo que ainda não configurou as prateleiras do seu estoque.<br />
+                 Por favor vá ate configuração e configure o anbiente das prateleiras
+            </p>
+        </div>
+        <div *ngIf="!prateleiras[0] && loadingPrateleiras" class="col-12 text-center" style="height: 100%;display: flex;justify-content: center;align-content: center;">
+            <img src="./assets/loadings/Gear-0.2s-200px.gif" style="width: 30%;height: 75%;">
+        </div>
+
+    </div>
+</div>

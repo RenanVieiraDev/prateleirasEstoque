@@ -1,0 +1,18 @@
+#projeto relizado por ~ Sllim soluções ~ 
+#contato: (87)9.9136-2272
+#site: https://sllim.com.br
+#author: Renan Vieira
+#Email contato: sllim.adm0@gmail.com
+
+#Ficha Tecnica: 
+#Produzido com angular 9 e firebase,
+#Aplicação compativel com verções atualizadas do Chrome
+
+#versões
+#1.0.0 data:22/08/2020 ===
+#1.0.1 data:28/08/2020 ===
+
+#Banco de dados Firebase
+#Site para gerenciamento do Banco de Dados: https://firebase.google.com
+#Email: estoquepapelorganizer@gmail.com
+#Senha: joel11077223

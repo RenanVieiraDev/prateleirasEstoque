@@ -1,0 +1,24 @@
+<div id="containerLogin">
+    <div id="containerAlert" class="escondeAlerta">
+      <img class="mr-2" id="imgAlert" style="width: 25px;"> 
+      <span style="font-size: 25px;"> <b>
+          Indentificação não Autorizada
+      </b> </span>
+    </div>
+
+    <div id="containerInternoLogin" class="ml-auto mr-auto col-11 col-md-4">
+            <h3>Login</h3>
+        <form [formGroup]="dadosLogin" (submit)="login()" *ngIf="loadingBtnEntrar === false">
+            <div class="form-group">
+                <input formControlName="email" type="email" class="form-control" placeholder="Email">
+            </div>
+                <div class="form-group">
+                  <input formControlName="senha" type="password" class="form-control" placeholder="Senha">
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+        <img src="./assets/loadings/Gear-0.2s-200px.gif" class="ml-auto mr-auto" *ngIf="loadingBtnEntrar">
+    </div>
+
+
+</div>

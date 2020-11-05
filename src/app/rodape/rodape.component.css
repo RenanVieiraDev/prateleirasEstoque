@@ -1,0 +1,44 @@
+footer{
+    background-color: #238CBC;
+}
+#containerAddProd{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,.5);
+    width: 100%;
+    height: 100%;
+    z-index: 1200;
+}
+.containerInternoAlert{
+    background-color: #ffffff;
+    box-shadow: 2px 2px 2px rgba(225,255,255,.3);
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+
+#containerAlert{
+    width: 100%;
+    position: absolute;
+    padding: 10px;
+    top:0px;
+    z-index: 10150;
+    text-align: center;
+    left: 0px;
+    color: white;
+}
+
+.sombraVerdeAlert{
+    box-shadow: 5px 5px 5px rgba(7,118,7,.3);
+}
+.sombraVermelhaAlert{
+    box-shadow: 5px 5px 5px rgba(249, 28,28,.3);
+}
+.escondeAlerta{
+    display: none;
+}
+.mostraAlerta{
+    display: block;
+}

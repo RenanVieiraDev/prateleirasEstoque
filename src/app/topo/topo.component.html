@@ -1,0 +1,65 @@
+<nav class="navbar navbar-light fixed-top navbar-expand-lg">
+  <button class="navbar-toggler mb-2" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+    <div class="btn-group dropdown">
+      <div id="containerIconUser" class="borderOff" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img src="./assets/user/collaboratorOff.png" id="logoUser">
+      </div>
+      <div class="dropdown-menu">
+        <a href="#" class="dropdown-item" routerLink="/login">
+          Login
+        </a>
+        <a href="#" class="dropdown-item" (click)="sairUser()">
+          Sair
+        </a>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-light mb-1" style="padding: 3px;" routerLink="/">
+      <img src="./assets/IconesGerais/home.png" style="width: 25px; height: 20px;">
+    </button>
+    <button type="button" class="btn btn-light ml-1 mb-1" style="padding: 3px;" routerLink="/addProduto">
+      <img src="./assets/IconesGerais/addPapel.png" style="width: 25px; height: 23px;">
+    </button>
+    <button type="button" class="btn btn-light ml-1 mb-1 mr-3" style="padding: 3px;" routerLink="/rmProduto">
+      <img src="./assets/IconesGerais/removerPapel.png" style="width: 25px; height: 23px;">
+    </button>
+   
+    <div class="d-none d-lg-block col-md-7 col-12">
+      <div class="input-group mb-1 mt-2 p-0">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">
+            <img src="./assets/IconesGerais/lupa.png" id="lupaSearchImg">
+          </span>
+        </div>
+        <input type="text" routerLink="/"  (keyup)="searchProd(pesquisa)" class="form-control" #pesquisa placeholder="Tipo, Nome, Tamanho, Fornecedor, Gramagem ..." aria-label="Search" aria-describedby="basic-addon1">
+      </div>
+    </div>
+    
+
+  </div>
+   
+    <!-- Default dropleft button -->
+    <div class="btn-group dropleft" style="position: absolute;right: 8px;top: 8px;">
+      <a type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img src="./assets/IconesGerais/catracas.png" id="catracasConfImg">
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item">
+          <button type="button" class="btn btn-primary btn-sm" routerLink="/confPrateleiras">
+            Prateleiras
+          </button>
+        </a>
+        <a class="dropdown-item">
+          <button type="button" class="btn btn-primary btn-sm" routerLink="/confFuncionario">
+            Funcionarios
+          </button>
+        </a>
+      </div>
+    </div>
+
+</nav>

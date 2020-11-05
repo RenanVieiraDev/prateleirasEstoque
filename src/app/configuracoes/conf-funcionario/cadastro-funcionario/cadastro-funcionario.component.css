@@ -1,0 +1,23 @@
+#containerAlert{
+    width: 100%;
+    position: absolute;
+    padding: 10px;
+    top:0px;
+    z-index: 10150;
+    text-align: center;
+    left: 0px;
+    color: white;
+}
+
+.sombraVerdeAlert{
+    box-shadow: 5px 5px 5px rgba(7,118,7,.3);
+}
+.sombraVermelhaAlert{
+    box-shadow: 5px 5px 5px rgba(249, 28,28,.3);
+}
+.escondeAlerta{
+    display: none;
+}
+.mostraAlerta{
+    display: block;
+}

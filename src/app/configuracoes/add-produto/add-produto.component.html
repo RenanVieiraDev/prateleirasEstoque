@@ -1,0 +1,123 @@
+<div *ngIf="trougleNivelDeAcessoNegadoPor" class="row m-0" id="acessoNivelNegado">
+  <div id="cardInfoNivelNegado" class="col-11 col-md-4 text-center ml-auto mr-auto">
+      <h3 class="text-danger">Ops!</h3>
+      <p>
+       você não tem acesso para essa seção!
+      </p>
+      <button class="btn btn-primary" (click)="voltarInicio()">Inicio</button>
+  </div>
+</div>
+
+<div class="container-fluid" id="containerAddProduto">
+  <div *ngIf="loadingAcesso" class="text-center">
+    <img src="./assets/loadings/Gear-0.2s-200px.gif" class="ml-auto mt-5">
+  </div>
+  <div *ngIf="negarAcesso === false && loadingAcesso === false">
+    <div id="containerMapaPrateleiras" class="row m-0 p-0" *ngIf="trougleMapaPrateleiras">
+      <div class="col row pl-4" id="containerTelaPrateleiraHome">
+        <div class="col-12 text-center mb-2 text-white" style="border-bottom: 1px solid rgba(0,0,0,.1);">
+          <div style="background-color: white;width: 120px; padding: 5px;border-radius: 5px;">
+            <table>
+                <tr>
+                    <td>
+                        <div class="sinbolGarfLugares" style="background-color: #202D32;"></div>
+                    </td>
+                    <td>
+                        <small class="text-muted">Vazio</small>
+                    </td>
+                    <td class="pl-2">
+                        <div class="sinbolGarfLugares bg-danger"></div>
+                    </td>
+                    <td>
+                        <small class="text-muted">Cheio</small>
+                    </td>
+                </tr>
+            </table>
+            
+        </div>
+            <b>Escolha o local para armazenar o papel.</b>
+        </div>
+  
+        <div *ngFor="let prateleira of ListOfPrateleiras; let indcPrateleria = index" class="col-5 col-lg-2 Containerprateleira" style="margin: 3px;margin-bottom: 10px;">
+             <b>{{prateleira.letraPrateleira}}</b>  
+            <div *ngFor="let andar of prateleira.andares; let indcGondula = index" class="ContainerGondula row">
+                <div style="width: 100%;">
+                 <small>{{andar.andares}}</small>   
+                </div>
+                <div class="col-12 m-1 espacoCard{{lugar.quantidadeProdutoArmazenado}}" *ngFor="let lugar of andar.espacos; let espacoId = index" (click)="setaValorIninputLocal(lugar.quantidadeProdutoArmazenado,andar.andares,indcPrateleria,indcGondula,espacoId)"> 
+                  <small>({{espacoId+1}})</small> 
+                </div>
+            </div>
+        </div>
+     </div>
+    </div>
+  
+    <div id="containerAlert" class="escondeAlerta">
+      <img class="mr-2" id="imgAlert" style="width: 25px;"> 
+      <span style="font-size: 25px;"> <b>{{msgAlerta}}</b> </span>
+    </div>
+  
+    <img class="d-none d-lg-block" src="./assets/IconesGerais/addPapel.png" style="width: 90px;height: 90px;position: absolute;">
+  
+    <div style="width: 100%;text-align: center;"> 
+      <h3>Adicionar Produto</h3>
+    </div>
+    
+      <form [formGroup]="dadosProduto" (submit)="salvarProduto()" class="ml-auto mr-auto col-11 col-lg-6">
+          <div class="form-group">
+            <input formControlName="tipoPapel" type="text" class="form-control" placeholder="Tipo de Papel">
+          </div>
+  
+          <div class="form-row m-1">
+            <div class="col-11 col-md-6 mb-1">
+              <input formControlName="nomePapel" type="text" class="form-control" placeholder="Nome Papel">
+            </div>
+            <div class="col-11 col-md-6 mb-1">
+              <input type="text" formControlName="gramagemPapel" class="form-control" placeholder="Gramagem ~ 350gm">
+            </div>
+          </div>
+  
+          <div class="form-row m-1">
+            <div class="col-11 col-md-6 mb-1">
+              <input type="text" formControlName="tamanhoPapel" class="form-control" placeholder="Tamanho Papel">
+            </div>
+            <div class="col-11 col-md-6 mb-1">
+              <input type="text" formControlName="fornecedorPapel" class="form-control" placeholder="Fornecedor">
+            </div>
+          </div>
+  
+          <div class="form-row mt-3">
+            <div class="form-group col-11 col-md-6 ml-auto mr-auto">
+              <input type="number" min='0' formControlName="quantidadePapel" class="form-control" placeholder="Quantidade">
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <textarea class="form-control" formControlName="observaçõesPapel" rows="3" placeholder="Observações"></textarea>
+          </div>
+          
+          
+  
+          <div class="row m-1">
+            <div class="col-11 text-center d-block d-lg-none mb-2" (click)="trougleMapaDocumentoPrateleiras()">
+              <input type="text" id="armazenamentolocalId" class="form-control ml-auto mr-auto mb-1" disabled formControlName="localPapel" placeholder="local Armazenamento">
+            </div>
+            <div class="col-6 col-lg-2 text-center">
+              <button type="button" class="btn btn-danger" routerLink="/">Cancelar</button>
+            </div>
+            <div class="col text-center d-none d-lg-block" >
+                <input type="text" id="armazenamentolocalId" class="form-control ml-auto mr-auto mb-1" disabled formControlName="localPapel" style="width: 50%;" >
+                <button type="button" (click)="trougleMapaDocumentoPrateleiras()" class="btn btn-outline-secondary btn-sm ml-auto mr-auto"  style="width: 50%;cursor: pointer;">
+                  Armazenamento
+                </button>
+            </div>
+            <div class="col-6 col-lg-2 text-center">
+              <button *ngIf="loadingSaveProduto === false" type="submit" class="btn btn-success">Salvar</button>
+              <img *ngIf="loadingSaveProduto" src="../../../assets/loadings/Gear-0.2s-200px.gif" style="width: 50px;height: 50px;">
+            </div>
+          </div>
+  
+        </form>
+  </div>
+  
+</div>

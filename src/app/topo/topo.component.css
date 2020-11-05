@@ -1,0 +1,54 @@
+nav{
+    background-color: #238CBC;
+}
+#catracasConfImg{
+    width: 25px;
+    height: 20px;
+}
+#lupaSearchImg{
+    width: 20px;
+    height: 20px;
+}
+#subMenuConf{
+  width: 100%;
+  margin-top: 5px;
+}
+#subMenuConf ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+#subMenuConf li{
+    display: inline;
+    margin: 5px;
+}
+.dropdown-item:hover{
+    background-color: #ffffff;
+}
+
+#containerIconUser{
+    padding:2px;
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    background-color: #ffffff;
+    margin-right: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#containerIconUser img{
+    width: 25px;
+    height: 25px;
+}
+#containerIconUser:hover{
+    background-color: #dbd4d4;
+    transition: 0.5s;
+}
+
+.borderOn{
+    border: 2px solid greenyellow;
+}
+.borderOff{
+    border: 2px solid red;
+}

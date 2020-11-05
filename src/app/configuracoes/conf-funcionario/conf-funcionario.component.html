@@ -1,0 +1,51 @@
+<div id="containerAlert" class="escondeAlerta">
+    <img class="mr-2" id="imgAlert" style="width: 25px;"> 
+    <span style="font-size: 25px;"> <b>{{msgAlerta}}</b> </span>
+</div>
+
+<div *ngIf="trougleNivelDeAcessoNegadoPor" class="row m-0" id="acessoNivelNegado">
+    <div id="cardInfoNivelNegado" class="col-11 col-md-4 text-center ml-auto mr-auto">
+        <h3 class="text-danger">Ops!</h3>
+        <p>
+         você não tem acesso para essa seção!
+        </p>
+        <button class="btn btn-primary" (click)="voltarInicio()">Inicio</button>
+    </div>
+</div>
+
+<div class="row" id="containerHome">
+    <div *ngIf="loadingAcesso" class="col-12 text-center pt-5" style="height: 100%;">
+        <img src="./assets/loadings/Gear-0.2s-200px.gif" style="margin-top: 5%;">
+    </div>
+
+        <div class="col-2 col-sm-1 col-lg-2" id="menuLateralSearch" *ngIf="negarAcesso === false && loadingAcesso === false">
+            <div class=" mb-2 d-block d-lg-none" style="text-align: left">
+                <img class="ml-2" src="../../../assets/IconesGerais/maisIcon.png" id="lupaSearchImg" (click)="trougleMenuLateralMObile()" style="widows: 25px;height: 25px;">
+            </div>
+
+            <div class="d-none d-lg-block" id="menuLat">
+                <div style="text-align: center;">
+                    <span>
+                        Funcionario
+                     </span>
+                     <hr />
+                </div>
+
+                <ul>
+                    <li>
+                        <a *ngIf="telaView != 1" (click)="mudaTelaView(1)" >
+                            Cadastrar
+                        </a>
+                        <a *ngIf="telaView === 1" class="itemSelected" >
+                            Cadastrar
+                        </a>
+                    </li>
+                </ul>
+            </div>      
+        </div>
+
+        <div class="col pl-4" id="containerTelaPrateleiraHome" *ngIf="negarAcesso === false && loadingAcesso === false">
+            <app-cadastro-funcionario *ngIf="telaView === 1"></app-cadastro-funcionario>
+        </div>
+    
+</div>

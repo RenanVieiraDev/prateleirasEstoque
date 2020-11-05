@@ -1,0 +1,185 @@
+#containerHome{
+    height: 100%;
+    width: 99%;
+}
+#menuLateralSearch{
+    background-color: #202D32;
+    padding-top: 90px;
+    padding-right: 0px;
+}
+#menuLateralSearch span{
+    color: white;
+    margin-left: 6px;
+}
+#menuLateralSearch hr{
+    background-color: rgba(255,225,225,.3);
+    height: -1px;
+    width: 100%;
+}
+#cardProdutoInfo{
+    background-color: #238CBC;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px rgba(255,225,255,.2);
+    margin: 8px;
+    color: white;
+    cursor: pointer;
+}
+#cardProdutoInfo:hover{
+    box-shadow: 2px 2px 2px rgba(255,255,2,.5);
+}
+
+#cardProdutoInfo li{
+    border-bottom: 1px solid rgba(0,0,0,.2);
+}
+
+#cardProdutoInfo img{
+    width: 30px;
+    height: 35px;
+}
+
+#containerTelaPrateleiraHome{
+    padding-top: 60px;
+    max-height: 100%;
+    padding-bottom: 150px;
+    overflow-y: auto;
+    align-items: flex-start;
+    display: flex;
+}
+
+.Containerprateleira{
+    background-color: #C4C4C4;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 2px;
+    text-align: center;
+}
+.ContainerGondula{
+    background-color: #EBF0F5;
+    border-radius: 3px;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.ContainerGondula:hover{
+    box-shadow: 2px 2px 2px rgba(0,0,0,.3);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: 0.6s;
+}
+
+.espacoCard0{
+    border-radius: 5px;
+    background-color: #202D32;
+    color: white;
+    cursor: pointer;
+}
+
+.espacoCard1{
+    border-radius: 5px;
+    background-color: rgba(255, 0, 0, 0.486);;
+    color: white;
+    cursor: pointer;
+}
+
+#alertaFormLugares{
+    background-color: rgba(0,0,0,.6);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0px;
+    left: 0px;
+    z-index: 1100;
+}
+
+#cardFormAlertLugares{
+    filter: drop-shadow(4px 4px 4px rgba(225,225,225,.3)); 
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 290px;
+    margin-top: 5%;
+    padding: 10px;
+    text-align: center;
+}
+
+#containerAlert{
+    width: 100%;
+    position: absolute;
+    padding: 10px;
+    top:0px;
+    z-index: 10150;
+    text-align: center;
+    left: 0px;
+    color: white;
+}
+
+.sinbolGarfLugares{
+    width: 15px;
+    height: 15px;
+}
+
+.sombraVerdeAlert{
+    box-shadow: 5px 5px 5px rgba(7,118,7,.3);
+}
+.sombraVermelhaAlert{
+    box-shadow: 5px 5px 5px rgba(249, 28,28,.3);
+}
+.escondeAlerta{
+    display: none;
+}
+.mostraAlerta{
+    display: block;
+}
+
+.menuLateralEspandido{
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    padding-left: 13px;
+    z-index: 1001;
+}
+#mudaLetras{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+    z-index: 1200;
+}
+
+#mudaLetrasForm{
+    filter: drop-shadow(4px 4px 4px rgba(225,225,225,.3)); 
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding: 10px;
+    text-align: center;
+}
+
+#acessoNivelNegado{
+    background-color: rgba(0,0,0,.8);
+    top: 0px;
+    left: 0px;
+    z-index: 1200;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    -webkit-justify-content: center;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#cardInfoNivelNegado{
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px rgba(255,255,255,.3);
+    padding: 10px;
+    margin-top: 90px;
+}

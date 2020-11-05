@@ -1,0 +1,77 @@
+<div *ngIf="trougleNivelDeAcessoNegadoPor" class="row m-0" id="acessoNivelNegado">
+    <div id="cardInfoNivelNegado" class="col-11 col-md-4 text-center ml-auto mr-auto">
+        <h3 class="text-danger">Ops!</h3>
+        <p>
+         você não tem acesso para essa seção!
+        </p>
+        <button class="btn btn-primary" (click)="voltarInicio()">Inicio</button>
+    </div>
+</div>
+
+<div id="containerConfirmDelete" *ngIf="trougleConfirmDelProd">
+    <div id="alertErro" *ngIf="erroUnidadesEmEstoque">
+       <b>As unidades em estoque é superior a 0, não é possivel deletar esse papel.</b> 
+    </div>
+    <div id="containerInfoDeletProd" class="col-11 col-md-4">
+       
+        <img src="./assets/IconesGerais/pepel.png">
+        <b>{{produtoParaDeletarNow['nomePapel']}}</b>
+        <p>
+            <span>Tipo:<b>{{produtoParaDeletarNow['tipoPapel']}}</b></span><br />
+            <span>Tamanho:<b>{{produtoParaDeletarNow['tamanhoPapel']}}</b></span><br />
+            <span>Gramagem:<b>{{produtoParaDeletarNow['gramagemPapel']}}</b></span><br />
+            <span>Fornecedor:<b>{{produtoParaDeletarNow['fornecedorPapel']}}</b></span><br />
+            <span>Quantidade em estoque:<b>{{produtoParaDeletarNow['quantidadePapel']}}</b></span>
+        </p>
+        <div style="width: 100%;" class="row">
+            <div class="col">
+                <button *ngIf="loadingDeletProd === false" class="btn btn-sm btn-danger btn-block" (click)="deletaProdutoInDB(produtoParaDeletarNow)">Deletar</button>
+                <img *ngIf="loadingDeletProd" src="./assets/loadings/Gear-0.2s-200px.gif" style="width: 35px; height: 35px;"> 
+            </div>
+            <div class="col">
+                <button class="btn btn-sm btn-secondary btn-block" (click)="trougleConfirmDelete([])">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="containerListProdDel" class="row">
+    <img *ngIf="!listOfProducts[0]" src="./assets/loadings/Gear-0.2s-200px.gif" class="ml-auto mr-auto mt-5" >
+    <div class="cardProd col-2" *ngFor="let produto of listOfProducts">
+        <img src="../../../assets/IconesGerais/pepel.png">
+        <b>{{produto['nomePapel']}}</b>
+        <ul>
+            <li>
+                <span>
+                   Tipo:<b>{{produto['tipoPapel']}}</b>
+                </span>
+            </li>
+            <li>
+                <span>
+                  Tamanho: <b>{{produto['tamanhoPapel']}}</b> 
+                </span>
+            </li>
+            <li>
+                <span>
+                   Gramagem: <b>{{produto['gramagemPapel']}}</b>
+                </span>
+            </li>
+            <li>
+                <span>
+                   Fornecedor:<b>{{produto['fornecedorPapel']}}</b> 
+                </span>
+            </li>
+            <li>
+                <span>
+                    Quantidade:<b *ngIf="produto['quantidadePapel'] > 0" class="text-success">{{produto['quantidadePapel']}}</b> <b *ngIf="produto['quantidadePapel'] === 0" class="text-danger">{{produto['quantidadePapel']}}</b>
+                </span>
+            </li>
+            <li>
+                <span>
+                 Local:<b>{{produto['localPapel']['letra']}} - {{produto['localPapel']['espaco']+1}}</b>
+                </span>
+            </li>
+        </ul>
+        <button class="btn btn-danger btn-block btn-sm m-0" (click)="trougleConfirmDelete(produto)">Deletar isto!</button>
+    </div>
+</div>

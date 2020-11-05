@@ -1,0 +1,133 @@
+<div id="containerAlert" class="escondeAlerta">
+    <img class="mr-2" id="imgAlert" style="width: 25px;"> 
+    <span style="font-size: 25px;"> <b>{{msgAlerta}}</b> </span>
+</div>
+<footer class="navbar navbar-light fixed-bottom">
+    <div class="d-none d-lg-block" *ngIf="produtoAtivoNow" style="position: absolute;">
+        <small class="text-white" *ngIf="produtoAtivoNow">ID do produto: {{produtoAtivoNow['id_prod']}}</small>
+    </div>
+
+    <button *ngIf="!produtoAtivoNow" disabled type="button" class="btn btn-success btn-sm ml-auto mr-3">
+        Adicionar Unidade
+    </button>
+    <button *ngIf="!produtoAtivoNow" disabled type="button" class="btn btn-danger btn-sm ml-3 mr-auto">
+       Retira Unidade
+    </button>
+
+    <button (click)="trougleAddProdutoContainer()" *ngIf="produtoAtivoNow" type="button" class="btn btn-success btn-sm ml-auto mr-3">
+         Adicionar Unidade
+     </button>
+     <button  (click)="trougleRetirarProdutoContainer()" *ngIf="produtoAtivoNow" type="button" class="btn btn-danger btn-sm ml-3 mr-auto">
+        Retira Unidade
+     </button>
+</footer>
+
+<div *ngIf="addProdutoContainer" id="containerAddProd">
+
+    <div class="containerInternoAlert p-4 col-11 col-md-4">
+        <div style="width: 100%;text-align: right;color: black;">
+            <a (click)="trougleAddProdutoContainer()" style="cursor: pointer;">X</a>
+        </div>
+        <div style="width: 100%;text-align: center;">
+            <h3>Adicionar Unidades</h3>
+        </div>
+        <div style="text-align: center;">
+            <img *ngIf="loadingSubmitFormRetirarUn && loginNecessario === false" class="ml-auto mr-auto" src="./assets/loadings/Gear-0.2s-200px.gif">
+        </div>
+        <div *ngIf="loginNecessario === true" style="text-align: center;">
+            <p>
+                É necessario realizar o login 
+                para continuar!
+            </p>
+            <button class="btn btn-primary btn-sm mr-3" (click)="redirecionaParaLoginComponent(1)">Login</button>
+            <button class="btn btn-danger btn-sm" (click)="trougleAddProdutoContainer()">Cancelar</button> 
+        </div>
+        <form *ngIf="loadingSubmitFormRetirarUn === false && loginNecessario === false"  [formGroup]="addProduto" (submit)="addUNProduto()" class="ml-auto mr-auto" style="width: 90%;">
+            <div class="mt-2 mb-2">
+                <input formControlName="quantidadeUN" type="number" class="form-control" placeholder="Quantidade de unidade para adicionar">
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <button type="submit" class="btn btn-outline-success btn-sm btn-block">
+                        Adicionar
+                    </button>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+    
+
+</div>
+
+<div *ngIf="retirarProdutoContainer" id="containerAddProd">
+    <div class="containerInternoAlert p-4 col-11 col-md-6">
+        <div style="width: 100%;text-align: right;color: black;">
+            <a (click)="trougleRetirarProdutoContainer()" style="cursor: pointer;">X</a>
+        </div>
+        <div style="width: 100%;text-align: center;">
+            <h3>Retirar Unidades</h3>
+        </div>
+        <div style="text-align: center;">
+            <img *ngIf="loadingSubmitFormRetirarUn && loginNecessario === false" class="ml-auto mr-auto" src="./assets/loadings/Gear-0.2s-200px.gif">
+        </div>
+        <div *ngIf="loginNecessario === true" style="text-align: center;">
+            <p>
+                É necessario realizar o login 
+                para continuar!
+            </p>
+            <button class="btn btn-primary btn-sm mr-3" (click)="redirecionaParaLoginComponent(2)">Login</button>
+            <button class="btn btn-danger btn-sm" (click)="trougleRetirarProdutoContainer()">Cancelar</button> 
+        </div>
+        <form *ngIf="loadingSubmitFormRetirarUn === false && loginNecessario === false"  [formGroup]="retiraProduto" (submit)="retirarUNProduto()" class="ml-auto mr-auto" style="width: 90%;">
+            <div class="row">
+                <div class="col-9">
+                    <input formControlName="ordemServico" type="text" class="form-control" placeholder="Ordem de serviço">
+                </div>
+            </div>
+                    
+            <div class="row mt-2 mb-2">
+                <div class="col-12 col-lg-6 mb-1">
+                  <input formControlName="qPlanos" type="number" class="form-control" placeholder="Quantidade de planos">
+                </div>
+                <div class="col-12 col-lg-6 mb-1">
+                  <input formControlName="qAfinacao" type="number" class="form-control" placeholder="Quantidade Afinação">
+                </div>
+            </div>
+
+            <div class="mt-2 mb-2">
+                <input formControlName="tamanhoCorte" type="text" class="form-control" placeholder="Tamanho de Corte">
+            </div>
+
+            <div class="row mt-2 mb-2">
+                <div class="col">
+                  <input formControlName="tipoPapel" type="text" class="form-control" placeholder="Tipo do papel" [value]="valorTipoPapelSet" disabled>
+                </div>
+                <div class="col">
+                  <input formControlName="tamanhoPapel" type="text" class="form-control" placeholder="Tamanho do papel" [value]="valorTamanhoPapelSet" disabled>
+                </div>
+            </div>
+
+            <div class="mt-2 mb-2">
+                <input formControlName="quantidadeRetirar" type="number" class="form-control" placeholder="Quantidade de unidade para retirar">
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <button (click)="imprimirOrdenServiceParaAguardo()" type="button" class="btn btn-outline-warning btn-sm btn-block">
+                        Imprimir
+                    </button>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-outline-danger btn-sm btn-block">
+                        Retirar
+                    </button>
+                </div>
+
+            </div>
+        </form>
+        
+    </div>
+
+</div>
